@@ -1,0 +1,17 @@
+[Unit]
+Description=SIS4 Docker Container
+After=docker.service
+
+[Service]
+Restart=always
+ExecStart=/usr/bin/docker run --name sis4-app yourdockername/sis4-app:latest
+ExecStop=/usr/bin/docker stop sis4-app
+ExecStopPost=/usr/bin/docker rm sis4-app
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl daemon-reload
+sudo systemctl enable sis4-container
+sudo systemctl start sis4-container
+sudo systemctl status sis4-container
