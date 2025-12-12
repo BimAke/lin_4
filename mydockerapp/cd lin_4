@@ -1,1 +1,7 @@
 docker build -t YOUR_DOCKERHUB_NAME/sis4-app:latest .
+chmod +x scripts/log-date.sh
+chmod +x scripts/check-disk.sh
+
+crontab cronjobs.txt
+tail -f /var/log/date.log
+tail -f /var/log/disk.log
